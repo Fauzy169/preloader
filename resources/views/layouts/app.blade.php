@@ -11,7 +11,7 @@
 <body>
     <!-- Preloader -->
     <div id="preloader">
-        <img src="{{ asset('images/logos-01.png') }}" alt="Loading">
+        <img src="{{ asset('images/LogoBeLearnings-01.png') }}" alt="Loading">
         <div id="loading-text">Loading... <span id="percentage">0%</span></div>
     </div>
 
