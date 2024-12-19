@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/preloader.css') }}">
 </head>
 <body>
-    <!-- Preloader -->
+    
     <div id="preloader">
         <img src="{{ asset('images/LogoBeLearnings-01.png') }}" alt="Loading">
         <div id="loading-text">Loading... <span id="percentage">0%</span></div>
@@ -19,18 +19,22 @@
         @yield('content')
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        let percentage = 0;
-        let interval = setInterval(() => {
-            percentage += 1;
-            document.getElementById('percentage').innerText = percentage + '%';
+        $(document).ready(function() {
+            let percentage = 0;
+            let interval = setInterval(() => {
+                percentage += 1;
+                $('#percentage').text(percentage + '%');
 
-            if (percentage >= 100) {
-                clearInterval(interval);
-                document.getElementById('preloader').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            }
-        }, 10)
+                if (percentage >= 100) {
+                    clearInterval(interval);
+                    $('#preloader').fadeOut('slow', function() {
+                        $('#content').fadeIn('slow');
+                    });
+                }
+            }, 10);
+        });
     </script>
 </body>
 </html>
